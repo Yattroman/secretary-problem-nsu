@@ -2,9 +2,9 @@
 
 using task_1.targets;
 
-int startContendersNumber = 100; 
+/*int startContendersNumber = 100; 
 var process = new ContenderSearchProcess(new Hall(),
     new Princess(new ChoiceStrategyByFriendHelp(new Friend(), startContendersNumber)), 
     new ContenderFactory(), startContendersNumber);
 
-process.SearchLove();
+process.SearchLove();*/

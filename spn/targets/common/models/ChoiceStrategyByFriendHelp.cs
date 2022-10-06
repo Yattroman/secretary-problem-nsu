@@ -8,13 +8,13 @@ public class ChoiceStrategyByFriendHelp : IChoiceStrategy
     private readonly int _selectionBorder;
     private int _contendersWentThrough;
 
-    public ChoiceStrategyByFriendHelp(IFriend friend, int contendersExpected)
+    public ChoiceStrategyByFriendHelp(IFriend friend)
     {
         _friend = friend;
         _contendersWentThrough = 0;
         _currentBestVariant = null;
-        _contendersExpected = contendersExpected;
-        _selectionBorder = (int)(contendersExpected / Math.E);
+        _contendersExpected = 100;
+        _selectionBorder = (int)(_contendersExpected / Math.E);
     }
 
     public StrategyResponse GetBestVariant(RatedContender? contender)
