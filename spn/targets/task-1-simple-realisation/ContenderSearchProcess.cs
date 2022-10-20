@@ -8,7 +8,8 @@ public class ContenderSearchProcess
     private readonly int _startContendersNumber;
     private readonly List<RatedContender> _visitedContenders;
 
-    public ContenderSearchProcess(IHall hall, IPrincess princess, IContendersFactory contendersFactory, int startContendersNumber)
+    public ContenderSearchProcess(IHall hall, IPrincess princess, IContendersFactory contendersFactory,
+        int startContendersNumber)
     {
         _hall = hall;
         _princess = princess;
@@ -22,7 +23,7 @@ public class ContenderSearchProcess
         InitHall();
 
         RatedContender? love = null;
-        
+
         while (!_hall.IsNoContendersInHall())
         {
             RatedContender currentContender = _hall.ReturnNextContender();
@@ -37,7 +38,6 @@ public class ContenderSearchProcess
         }
 
         PrintResults(_princess.CheckChoice(love));
-        
     }
 
     private void PrintResults(int choiceResult)
@@ -54,12 +54,8 @@ public class ContenderSearchProcess
 
     private void InitHall()
     {
-        var rnd = new Random();
-        var contendersPoints = Enumerable.Range(1, _startContendersNumber).OrderBy(c => rnd.Next()).ToArray();
-
-        foreach (var i in contendersPoints)
-        {
-           _hall.AddNewContender(new RatedContender(_contendersFactory.CreateNewContender(), i));
-        }
+        _contendersFactory
+            .CreateRatedContenders(ContenderFactory.SimpleGeneration, _startContendersNumber)
+            .ForEach((contender) => _hall.AddNewContender(contender));
     }
 }

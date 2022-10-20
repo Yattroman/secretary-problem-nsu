@@ -2,5 +2,5 @@
 
 public interface IContendersFactory
 {
-    IContender CreateNewContender();
+    List<RatedContender> CreateRatedContenders(int generationType, int quantity);
 }

@@ -1,3 +1,4 @@
 ﻿/.idea/
-/spn/bin/
-/spn/obj/
+/*/bin/
+/*/obj/
+/*/targets/resources/x-api-key.txt

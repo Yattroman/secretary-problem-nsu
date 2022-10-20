@@ -2,8 +2,8 @@
 
 public class Contender : IContender
 {
-    private string _firstName;
-    private string _secondName;
+    private readonly string _firstName;
+    private readonly string _secondName;
 
     public Contender(string firstName, string secondName)
     {
@@ -14,5 +14,15 @@ public class Contender : IContender
     public string GetDetails()
     {
         return $"{_secondName} {_firstName}";
+    }
+
+    public string GetFirstName()
+    {
+        return _firstName;
+    }
+
+    public string GetSecondName()
+    {
+        return _secondName;
     }
 }

@@ -2,5 +2,6 @@
 
 public interface IFriend
 {
-    RatedContender GetBestContendersByComparing(RatedContender firstContender, RatedContender secondContender);
+    RatedContender GetBestContenderByComparing(RatedContender? firstContender, RatedContender? secondContender);
+    int GetFinalResult(RatedContender? ratedContender);
 }

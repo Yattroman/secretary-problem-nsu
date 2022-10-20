@@ -3,22 +3,32 @@
 public class RatedContender
 {
     private IContender _contender;
-    private int _rate;
-
-    public int Rate
-    {
-        get => _rate;
-        set => _rate = value;
-    }
+    public int Rate { get; }
+    public bool IsFamiliarWithPrincess { get; set; }
 
     public string GetDetails()
     {
-        return $"{_contender.GetDetails()} | Rate: {_rate}";
+        return $"{_contender.GetDetails()} | Rate: {Rate}";
+    }
+    
+    public void MeetWithPrincess()
+    {
+        IsFamiliarWithPrincess = true;
     }
 
     public RatedContender(IContender contender, int rate)
     {
         _contender = contender;
-        _rate = rate;
+        Rate = rate;
+    }
+
+    public string GetFirstName()
+    {
+        return _contender.GetFirstName();
+    }
+    
+    public string GetSecondName()
+    {
+        return _contender.GetSecondName();
     }
 }

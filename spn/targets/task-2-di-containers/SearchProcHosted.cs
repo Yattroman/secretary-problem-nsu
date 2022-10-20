@@ -95,12 +95,8 @@ public class SearchProcHosted : BackgroundService
 
     private void InitHall()
     {
-        var rnd = new Random();
-        var contendersPoints = Enumerable.Range(1, _startContendersNumber).OrderBy(c => rnd.Next()).ToArray();
-
-        foreach (var i in contendersPoints)
-        {
-            _hall.AddNewContender(new RatedContender(_contendersFactory.CreateNewContender(), i));
-        }
+        _contendersFactory
+            .CreateRatedContenders(ContenderFactory.NetGeneration, _startContendersNumber)
+            .ForEach((contender) => _hall.AddNewContender(contender));
     }
 }

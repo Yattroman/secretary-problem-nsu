@@ -1,12 +1,14 @@
-﻿namespace task_1.targets;
+﻿using task_1.targets.common.exceptions;
+
+namespace task_1.targets;
 
 public class ChoiceStrategyByFriendHelp : IChoiceStrategy
 {
     private readonly IFriend _friend;
     private RatedContender? _currentBestVariant;
     private readonly int _contendersExpected;
-    private readonly int _selectionBorder;
     private int _contendersWentThrough;
+    private int SelectionBorder { get; }
 
     public ChoiceStrategyByFriendHelp(IFriend friend)
     {
@@ -14,7 +16,7 @@ public class ChoiceStrategyByFriendHelp : IChoiceStrategy
         _contendersWentThrough = 0;
         _currentBestVariant = null;
         _contendersExpected = 100;
-        _selectionBorder = (int)(_contendersExpected / Math.E);
+        SelectionBorder = (int)(_contendersExpected / Math.E);
     }
 
     public StrategyResponse GetBestVariant(RatedContender? contender)
@@ -23,6 +25,8 @@ public class ChoiceStrategyByFriendHelp : IChoiceStrategy
         {
             return StrategyResponse.InvalidContender();
         }
+        
+        contender.MeetWithPrincess();
 
         _contendersWentThrough++;
 
@@ -32,13 +36,14 @@ public class ChoiceStrategyByFriendHelp : IChoiceStrategy
             return StrategyResponse.NotEnoughInfo();
         }
 
-        if (_contendersWentThrough < _selectionBorder)
+        if (_contendersWentThrough < SelectionBorder)
         {
             _currentBestVariant = GetCurrentBestContender(contender);
             return StrategyResponse.NotEnoughInfo();
         }
 
-        if (_contendersWentThrough == _contendersExpected)
+        
+        if (_contendersWentThrough > _contendersExpected)
         {
             return StrategyResponse.NoVariantsSuitable();
         }
@@ -50,13 +55,11 @@ public class ChoiceStrategyByFriendHelp : IChoiceStrategy
 
     public int GetChoiceResult(RatedContender? contender)
     {
-        return contender == null ? 10 : contender.Rate < 50 ? 0 : contender.Rate;
+        return _friend.GetFinalResult(contender);
     }
 
     private RatedContender GetCurrentBestContender(RatedContender? contender)
     {
-        return contender == null
-            ? _currentBestVariant
-            : _friend.GetBestContendersByComparing(_currentBestVariant, contender);
+        return  _friend.GetBestContenderByComparing(_currentBestVariant, contender);
     }
 }

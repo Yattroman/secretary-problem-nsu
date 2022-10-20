@@ -3,4 +3,6 @@
 public interface IContender
 {
     string GetDetails();
+    string GetFirstName();
+    string GetSecondName();
 }

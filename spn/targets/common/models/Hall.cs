@@ -1,11 +1,18 @@
-﻿namespace task_1.targets;
+﻿using task_1.targets.common.exceptions;
+
+namespace task_1.targets;
 
 public class Hall : IHall
 {
-    private Queue<RatedContender> _contenders = new Queue<RatedContender>();
+    private readonly Queue<RatedContender> _contenders = new Queue<RatedContender>();
 
     public RatedContender ReturnNextContender()
     {
+        if (IsNoContendersInHall())
+        {
+            throw new SecretaryProblemException(ErrorType.HallIsEmpty());
+        }
+
         return _contenders.Dequeue();
     }
 
