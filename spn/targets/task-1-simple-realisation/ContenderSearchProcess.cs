@@ -1,4 +1,8 @@
-﻿namespace task_1.targets;
+﻿using spn.targets.common.models;
+using spn.targets.common.models.interfaces;
+using spn.targets.common.util;
+
+namespace spn.targets.task_1_simple_realisation;
 
 public class ContenderSearchProcess
 {

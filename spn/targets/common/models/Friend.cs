@@ -1,6 +1,7 @@
-﻿using task_1.targets.common.exceptions;
+﻿using spn.targets.common.exceptions;
+using spn.targets.common.models.interfaces;
 
-namespace task_1.targets;
+namespace spn.targets.common.models;
 
 public class Friend : IFriend
 {
@@ -21,6 +22,7 @@ public class Friend : IFriend
 
     public int GetFinalResult(RatedContender? ratedContender)
     {
-        return ratedContender == null ? 10 : ratedContender.Rate < 50 ? 0 : ratedContender.Rate;
+        return ratedContender == null ? IChoiceStrategy.ParticularFailure :
+            ratedContender.Rate < IChoiceStrategy.SuccessBorder ? IChoiceStrategy.FullFailure : ratedContender.Rate;
     }
 }

@@ -1,6 +1,6 @@
-﻿using task_1.targets.common.exceptions;
+﻿using spn.targets.common.models.interfaces;
 
-namespace task_1.targets;
+namespace spn.targets.common.models;
 
 public class ChoiceStrategyByFriendHelp : IChoiceStrategy
 {
@@ -25,7 +25,7 @@ public class ChoiceStrategyByFriendHelp : IChoiceStrategy
         {
             return StrategyResponse.InvalidContender();
         }
-        
+
         contender.MeetWithPrincess();
 
         _contendersWentThrough++;
@@ -42,7 +42,7 @@ public class ChoiceStrategyByFriendHelp : IChoiceStrategy
             return StrategyResponse.NotEnoughInfo();
         }
 
-        
+
         if (_contendersWentThrough > _contendersExpected)
         {
             return StrategyResponse.NoVariantsSuitable();
@@ -53,6 +53,12 @@ public class ChoiceStrategyByFriendHelp : IChoiceStrategy
             : StrategyResponse.ItCanBeBetter();
     }
 
+    public void CleanupStrategy()
+    {
+        _currentBestVariant = null;
+        _contendersWentThrough = 0;
+    }
+
     public int GetChoiceResult(RatedContender? contender)
     {
         return _friend.GetFinalResult(contender);
@@ -60,6 +66,6 @@ public class ChoiceStrategyByFriendHelp : IChoiceStrategy
 
     private RatedContender GetCurrentBestContender(RatedContender? contender)
     {
-        return  _friend.GetBestContenderByComparing(_currentBestVariant, contender);
+        return _friend.GetBestContenderByComparing(_currentBestVariant, contender);
     }
 }

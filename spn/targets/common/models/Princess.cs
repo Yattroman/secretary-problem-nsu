@@ -1,4 +1,6 @@
-﻿namespace task_1.targets;
+﻿using spn.targets.common.models.interfaces;
+
+namespace spn.targets.common.models;
 
 public class Princess : IPrincess
 {
@@ -17,5 +19,10 @@ public class Princess : IPrincess
     public int CheckChoice(RatedContender? contender)
     {
         return _strategy.GetChoiceResult(contender);
+    }
+
+    public void PrepareToNextSearch()
+    {
+        _strategy.CleanupStrategy();
     }
 }

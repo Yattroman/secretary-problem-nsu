@@ -1,4 +1,4 @@
-﻿namespace task_1.targets;
+﻿namespace spn.targets.common.models;
 
 public class StrategyResponse
 {
@@ -10,7 +10,7 @@ public class StrategyResponse
         Message = message;
         Contender = contender;
     }
-    
+
     public static StrategyResponse InvalidContender()
     {
         return new StrategyResponse("Invalid contender", null);
@@ -20,12 +20,12 @@ public class StrategyResponse
     {
         return new StrategyResponse("Not enough info to decide who is better...", null);
     }
-    
+
     public static StrategyResponse ItCanBeBetter()
     {
         return new StrategyResponse("There is information that this one isn't best...", null);
     }
-    
+
     public static StrategyResponse ThatIsBestChoice(RatedContender contender)
     {
         return new StrategyResponse("This maaan is good choice", contender);

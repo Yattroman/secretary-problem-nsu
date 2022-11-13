@@ -1,6 +1,6 @@
-﻿using task_1.targets;
+﻿using spn.targets.common.util;
 
-namespace spn_tests.targets.task_3;
+namespace spn_tests.targets.task_3_tests;
 
 [TestClass]
 public class ContenderFactoryTests
