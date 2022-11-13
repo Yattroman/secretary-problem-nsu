@@ -1,14 +1,19 @@
 ﻿using System.Net;
 using System.Text.Json;
-using task_1.targets.common.exceptions;
+using spn.targets.common.exceptions;
 
-namespace task_1.targets;
+namespace spn.targets.common.util;
 
 public class NameGenerationWithNet
 {
     private const string ApiKeyFileName = "../../../../spn/targets/resources/x-api-key.txt";
     private const string FullNameDelimiter = " ";
-    private readonly HttpClient _httpClient = new HttpClient();
+    private readonly HttpClient _httpClient;
+
+    public NameGenerationWithNet()
+    {
+        _httpClient = PrepareHttpClient();
+    }
 
     public List<(string First, string Second)> GenerateFullNames(int quantity)
     {
@@ -32,8 +37,8 @@ public class NameGenerationWithNet
 
     private List<string> GetNFullNamesFromResponse(HttpResponseMessage fullNamesResponse, int quantity)
     {
-        ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12 | 
-                                                SecurityProtocolType.Tls11 | 
+        ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12 |
+                                                SecurityProtocolType.Tls11 |
                                                 SecurityProtocolType.Tls;
         var responseContent = fullNamesResponse.Content.ReadAsStringAsync().Result;
         var names = JsonSerializer.Deserialize<List<string>>(responseContent);
@@ -48,8 +53,15 @@ public class NameGenerationWithNet
 
     private HttpResponseMessage GetNFullNamesResponse(int quantity)
     {
-        _httpClient.DefaultRequestHeaders.Add("X-Api-Key", File.ReadLines(ApiKeyFileName).First());
         return _httpClient.GetAsync(GenerateRequestForGettingFullNames(quantity)).Result;
+    }
+
+    private HttpClient PrepareHttpClient()
+    {
+        var httpClient = new HttpClient();
+        httpClient.DefaultRequestHeaders.Add("X-Api-Key", File.ReadLines(ApiKeyFileName).First());
+
+        return httpClient;
     }
 
     private string GenerateRequestForGettingFullNames(int quantity)

@@ -1,15 +1,17 @@
 ﻿using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Hosting.Internal;
 using Microsoft.Extensions.Logging;
+using spn.targets.common.models;
+using spn.targets.common.models.interfaces;
+using spn.targets.common.util;
 
-namespace task_1.targets;
+namespace spn.targets.task_2_di_containers;
 
 public class SearchProcHosted : BackgroundService
 {
     private readonly IHall _hall;
     private readonly IPrincess _princess;
     private readonly IContendersFactory _contendersFactory;
-    
+
     private readonly IHostApplicationLifetime _hostApplicationLifetime;
     private readonly ILogger<SearchProcHosted> _logger;
 
@@ -19,16 +21,16 @@ public class SearchProcHosted : BackgroundService
     private const int WaitingTime = 1000;
 
     public SearchProcHosted(IHall hall, IPrincess princess,
-        IContendersFactory contendersFactory, ILogger<SearchProcHosted> logger, 
+        IContendersFactory contendersFactory, ILogger<SearchProcHosted> logger,
         IHostApplicationLifetime hostApplicationLifetime)
     {
         _hall = hall;
         _princess = princess;
         _contendersFactory = contendersFactory;
-        
+
         _logger = logger;
         _hostApplicationLifetime = hostApplicationLifetime;
-        
+
         _startContendersNumber = 100;
         _visitedContenders = new List<RatedContender>();
     }
@@ -44,7 +46,7 @@ public class SearchProcHosted : BackgroundService
         _logger.LogInformation("Stop searching contenders by Princess");
         await base.StopAsync(cancellationToken);
     }
-    
+
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         await StartSearchingLove();
@@ -57,9 +59,9 @@ public class SearchProcHosted : BackgroundService
         SearchLove();
         await Task.Delay(WaitingTime);
         _logger.LogInformation("I am done with searching love of whole life.");
-        
+
         _hostApplicationLifetime.StopApplication();
-    } 
+    }
 
     private void SearchLove()
     {

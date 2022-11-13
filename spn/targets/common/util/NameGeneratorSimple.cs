@@ -1,4 +1,4 @@
-﻿namespace task_1.targets;
+﻿namespace spn.targets.common.util;
 
 public class NameGeneratorSimple
 {
@@ -20,12 +20,12 @@ public class NameGeneratorSimple
 
         return fullnames;
     }
-    
+
     private string GenerateFirstName()
     {
         return _firstNameSet.ElementAt(_random.Next(_firstNameSet.Count));
     }
-    
+
     private string GenerateSecondName()
     {
         return _secondNameSet.ElementAt(_random.Next(_secondNameSet.Count));

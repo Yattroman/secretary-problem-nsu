@@ -1,0 +1,12 @@
+﻿version: "3.5"
+services:
+  data-base:
+    container_name: data-base
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: admin
+      POSTGRES_DB: spn

@@ -1,6 +1,9 @@
-﻿namespace task_1.targets.common.exceptions;
+﻿namespace spn.targets.common.exceptions;
 
 public enum ErrorCode
 {
-    HallIsEmpty, NotFamiliarWithPrincess, InvalidContender, RandomFullNamesNetError
+    HallIsEmpty,
+    NotFamiliarWithPrincess,
+    InvalidContender,
+    RandomFullNamesNetError
 }

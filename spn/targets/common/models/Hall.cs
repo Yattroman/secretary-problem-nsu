@@ -1,6 +1,7 @@
-﻿using task_1.targets.common.exceptions;
+﻿using spn.targets.common.exceptions;
+using spn.targets.common.models.interfaces;
 
-namespace task_1.targets;
+namespace spn.targets.common.models;
 
 public class Hall : IHall
 {
@@ -19,6 +20,11 @@ public class Hall : IHall
     public void AddNewContender(RatedContender contender)
     {
         _contenders.Enqueue(contender);
+    }
+
+    public void ClearHall()
+    {
+        _contenders.Clear();
     }
 
     public bool IsNoContendersInHall()

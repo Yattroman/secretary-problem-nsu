@@ -1,7 +1,7 @@
-﻿using task_1.targets;
-using task_1.targets.common.exceptions;
+﻿using spn.targets.common.exceptions;
+using spn.targets.common.models;
 
-namespace spn_tests.targets.task_3;
+namespace spn_tests.targets.task_3_tests;
 
 [TestClass]
 public class HallTests

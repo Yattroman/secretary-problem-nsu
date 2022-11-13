@@ -1,4 +1,7 @@
-﻿namespace task_1.targets;
+﻿using spn.targets.common.models;
+using spn.targets.common.models.interfaces;
+
+namespace spn.targets.common.util;
 
 public class ContenderFactory : IContendersFactory
 {
@@ -10,7 +13,7 @@ public class ContenderFactory : IContendersFactory
     public List<RatedContender> CreateRatedContenders(int generationType, int quantity)
     {
         var contenders = new List<RatedContender>();
-        
+
         var fullNames = generationType == SimpleGeneration
             ? _nameGeneratorSimple.GenerateFullNames(quantity)
             : _nameGenerationWithNet.GenerateFullNames(quantity);

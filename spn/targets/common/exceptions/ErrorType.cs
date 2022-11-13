@@ -1,4 +1,4 @@
-﻿namespace task_1.targets.common.exceptions;
+﻿namespace spn.targets.common.exceptions;
 
 public class ErrorType
 {
@@ -10,10 +10,10 @@ public class ErrorType
         ErrorCode = errorCode;
         Message = message;
     }
-    
+
     public static ErrorType HallIsEmpty()
     {
-        return new ErrorType(ErrorCode.HallIsEmpty, 
+        return new ErrorType(ErrorCode.HallIsEmpty,
             "There is no contenders in the hall");
     }
 
@@ -22,13 +22,13 @@ public class ErrorType
         return new ErrorType(ErrorCode.NotFamiliarWithPrincess,
             "Contender(s) isn(aren)'t familiar with princess yet");
     }
-    
+
     public static ErrorType InvalidContender()
     {
         return new ErrorType(ErrorCode.InvalidContender,
             "Contender(s) is(are) invalid");
     }
-    
+
     public static ErrorType RandomFullNameNetError()
     {
         return new ErrorType(ErrorCode.RandomFullNamesNetError,

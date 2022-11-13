@@ -1,15 +1,17 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using spn.targets.common.models;
+using spn.targets.common.models.interfaces;
+using spn.targets.common.util;
 
-namespace task_1.targets.task_2;
+namespace spn.targets.task_2_di_containers;
 
 public class Program
 {
-    public static void Main(string[] args)
+    /*public static void Main(string[] args)
     {
         CreateHostBuilder(args).Build().Run();
-    }
+    }*/
 
     static IHostBuilder CreateHostBuilder(string[] args)
     {

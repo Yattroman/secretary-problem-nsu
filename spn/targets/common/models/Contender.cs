@@ -1,4 +1,6 @@
-﻿namespace task_1.targets;
+﻿using spn.targets.common.models.interfaces;
+
+namespace spn.targets.common.models;
 
 public class Contender : IContender
 {

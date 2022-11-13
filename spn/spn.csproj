@@ -3,17 +3,25 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net6.0</TargetFramework>
-        <RootNamespace>task_1</RootNamespace>
+        <RootNamespace>spn</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="EntityFramework" Version="6.4.4" />
       <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0-rc.1.22426.10" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.0-rc.2" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="targets\results" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="targets\resources\appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>
