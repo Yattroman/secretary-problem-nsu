@@ -1,4 +1,5 @@
-﻿using spn.targets.common.models;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using spn.targets.common.models;
 
 namespace spn_tests.targets.task_3_tests;
 

@@ -1,11 +1,12 @@
-﻿using spn.targets.common.util;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using spn.targets.common.util;
 
 namespace spn_tests.targets.task_3_tests;
 
 [TestClass]
 public class ContenderFactoryTests
 {
-    private ContenderFactory _uut;
+    private readonly ContenderFactory _uut;
     private const int ContendersExpected = 100;
 
     public ContenderFactoryTests()
