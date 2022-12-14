@@ -1,5 +1,5 @@
-﻿using spn.targets.common.exceptions;
-using spn.targets.common.models;
+﻿using spn_models.targets.common.exceptions;
+using spn_models.targets.common.models;
 
 namespace spn_tests.targets.task_3_tests;
 

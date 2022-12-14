@@ -23,7 +23,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\spn\spn.csproj" />
+        <ProjectReference Include="..\spn\spn.csproj"/>
+        <ProjectReference Include="..\spn-models\spn-models.csproj"/>
+        <ProjectReference Include="..\spn-db\spn-db.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

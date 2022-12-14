@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using spn.targets.common.models;
-using spn.targets.common.models.interfaces;
-using spn.targets.common.util;
+using spn_models.targets.common.models;
+using spn_models.targets.common.models.interfaces;
+using spn_models.targets.common.util;
 
 namespace spn.targets.task_2_di_containers;
 

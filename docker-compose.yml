@@ -1,7 +1,7 @@
 ﻿version: "3.5"
 services:
-  data-base:
-    container_name: data-base
+  data-base-spn:
+    container_name: data-base-spn
     image: postgres
     restart: unless-stopped
     ports:

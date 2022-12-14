@@ -1,8 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+﻿using spn_db.targets.services;
 using spn.targets.task_2_di_containers;
-using spn.targets.task_4_db.services;
 
 namespace spn.targets.task_4_db;
 
@@ -11,7 +8,6 @@ public class SearchProcHostedWithDb : BackgroundService
     private readonly IHostApplicationLifetime _hostApplicationLifetime;
     private readonly ILogger<SearchProcHosted> _logger;
     private readonly ISearchProcessSimulatorService _searchProcessSimulatorService;
-    private readonly IConfiguration _configuration;
 
     private readonly UsingType _usingType;
     private readonly int _triesNumber;
@@ -22,10 +18,9 @@ public class SearchProcHostedWithDb : BackgroundService
         _hostApplicationLifetime = hostApplicationLifetime;
         _logger = logger;
         _searchProcessSimulatorService = searchProcessSimulatorService;
-        _configuration = configuration;
 
-        _usingType = _configuration.GetValue<UsingType>("SearchLoveParams:UsingType");
-        _triesNumber = _configuration.GetValue<int>("SearchLoveParams:SearchLoveTries");
+        _usingType = configuration.GetValue<UsingType>("SearchLoveParams:UsingType");
+        _triesNumber = configuration.GetValue<int>("SearchLoveParams:SearchLoveTries");
     }
 
     public override async Task StartAsync(CancellationToken cancellationToken)
@@ -66,7 +61,7 @@ public class SearchProcHostedWithDb : BackgroundService
         foreach (var search in searches)
         {
             _logger.LogInformation($"I'm recalling search: {search}!");
-            var searchResult = _searchProcessSimulatorService.RerunSearchProcessTryByName(search, true);
+            var searchResult = _searchProcessSimulatorService.FullRerunSearchProcessTryByName(search, true);
             _logger.LogInformation($"Search result: {searchResult}!");
         }
 

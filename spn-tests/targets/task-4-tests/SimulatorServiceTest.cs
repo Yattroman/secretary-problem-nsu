@@ -5,11 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
-using spn.targets.common.models;
-using spn.targets.common.util;
-using spn.targets.task_4_db.db_conf;
-using spn.targets.task_4_db.repositories;
-using spn.targets.task_4_db.services;
+using spn_db.targets.db_conf;
+using spn_db.targets.repositories;
+using spn_db.targets.services;
+using spn_models.targets.common.models;
+using spn_models.targets.common.util;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace spn_tests.targets.task_4_tests;
@@ -59,7 +59,7 @@ public class SimulatorServiceTest
         var resultsList = 
             (from search 
                 in searches 
-                let searchResult = _uut.RerunSearchProcessTryByName(search.Name, false) 
+                let searchResult = _uut.FullRerunSearchProcessTryByName(search.Name, false) 
                 select (search.SearchResult, searchResult))
             .ToList();
 
